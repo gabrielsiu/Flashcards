@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Flashcards
+
+  Created by Gabriel Siu on 2023-05-23.
+  
+*/
+
+// Titles
+"cards" = "Cards";
+"sets" = "Sets";
+"quiz" = "Quiz";
+"settings" = "Settings";
+
+// Sets
+"noSets" = "No Sets";

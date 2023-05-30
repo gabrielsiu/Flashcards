@@ -9,13 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    VStack {
-      Image(systemName: "globe")
-        .imageScale(.large)
-        .foregroundColor(.accentColor)
-      Text("Hello, world!")
+    let cardsTitle: LocalizedStringKey = "cards"
+    let quizTitle: LocalizedStringKey = "quiz"
+    let settingsTitle: LocalizedStringKey = "settings"
+    
+    TabView {
+      CardSetsView()
+        .tabItem {
+          Label(cardsTitle, systemImage: "square.3.stack.3d")
+        }
+      QuizView()
+        .tabItem {
+          Label(quizTitle, systemImage: "questionmark")
+        }
+      SettingsView()
+        .tabItem {
+          Label(settingsTitle, systemImage: "gear")
+        }
     }
-    .padding()
   }
 }
 
