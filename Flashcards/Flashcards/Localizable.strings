@@ -14,3 +14,6 @@
 
 // Sets
 "noSets" = "No Sets";
+"alertTitle" = "Add Set";
+"alertMessage" = "Enter the name of the set";
+"cancel" = "Cancel";

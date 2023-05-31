@@ -14,7 +14,7 @@ struct ContentView: View {
     let settingsTitle: LocalizedStringKey = "settings"
     
     TabView {
-      CardSetsView()
+      CardSetsView(CardSetsViewModel(CoreDataService()))
         .tabItem {
           Label(cardsTitle, systemImage: "square.3.stack.3d")
         }

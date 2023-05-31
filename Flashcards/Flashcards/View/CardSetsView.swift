@@ -10,27 +10,56 @@ import SwiftUI
 private enum Constants {
   static let title: LocalizedStringKey = "sets"
   static let noSets: LocalizedStringKey = "noSets"
+  
+  static let alertTitle: LocalizedStringKey = "alertTitle"
+  static let alertMessage: LocalizedStringKey = "alertMessage"
+  static let cancel: LocalizedStringKey = "cancel"
 }
 
 struct CardSetsView: View {
+  @StateObject private var viewModel: CardSetsViewModel
+  
+  @State var newSetName = ""
+  
+  init(_ viewModel: CardSetsViewModel) {
+    _viewModel = StateObject(wrappedValue: viewModel)
+  }
   
   var body: some View {
     NavigationView {
       List {
-        Text("1")
-        Text("2")
+        ForEach(viewModel.sets) { setEntity in
+          VStack(alignment: .leading) {
+            Text(setEntity.name ?? "")
+              .font(.headline)
+            Text("\(setEntity.cards?.count ?? 0) cards")
+              .font(.caption)
+          }
+        }
+        .onDelete(perform: viewModel.deleteSet)
       }
       .navigationTitle(Constants.title)
       .toolbar {
         Button {
-          print("Add button pressed")
+          viewModel.showingAlert = true
         } label: {
           Image(systemName: "plus")
         }
 
       }
+      .alert(Constants.alertTitle, isPresented: $viewModel.showingAlert, actions: {
+        TextField("Name", text: $newSetName)
+        Button(Constants.alertTitle) {
+          viewModel.addSet(newSetName)
+        }
+        Button(Constants.cancel, role: .cancel, action: {})
+      }, message: {
+        Text(Constants.alertMessage)
+      })
       .overlay(Group {
-        Text(Constants.noSets)
+        if viewModel.sets.isEmpty {
+          Text(Constants.noSets)
+        }
       })
     }
   }
@@ -38,6 +67,6 @@ struct CardSetsView: View {
 
 struct CardSetsView_Previews: PreviewProvider {
   static var previews: some View {
-    CardSetsView()
+    CardSetsView(CardSetsViewModel(CoreDataService()))
   }
 }

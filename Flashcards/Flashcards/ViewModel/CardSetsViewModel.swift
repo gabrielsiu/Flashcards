@@ -5,9 +5,47 @@
 //  Created by Gabriel Siu on 2023-05-23.
 //
 
-import Foundation
+import SwiftUI
+import CoreData
 
 class CardSetsViewModel: ObservableObject {
-//  @Published sets
+  @Published var sets: [SetEntity] = []
+  @Published var showingAlert = false
+  
+  let coreDataService: CoreDataService
+  
+  init(_ coreDataService: CoreDataService) {
+    self.coreDataService = coreDataService
+    getSets()
+  }
+  
+  func getSets() {
+    let request = NSFetchRequest<SetEntity>(entityName: "SetEntity")
+    
+    do {
+      sets = try coreDataService.context.fetch(request)
+    } catch let error {
+      print("Error getting sets: \(error)")
+    }
+  }
+  
+  func addSet(_ name: String) {
+    let newSet = SetEntity(context: coreDataService.context)
+    newSet.name = name
+    newSet.createdDate = Date()
+    save()
+  }
+  
+  func deleteSet(_ indexSet: IndexSet) {
+    guard let index = indexSet.first else { return }
+    let set = sets[index]
+    coreDataService.context.delete(set)
+    save()
+  }
+  
+  func save() {
+    coreDataService.save()
+    getSets()
+  }
 }
 

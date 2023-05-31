@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA46EA5A2A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA46EA582A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld */; };
 		DA6C82E72A1BC5B0007B98F0 /* FlashcardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C82E62A1BC5B0007B98F0 /* FlashcardsApp.swift */; };
 		DA6C82E92A1BC5B0007B98F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C82E82A1BC5B0007B98F0 /* ContentView.swift */; };
 		DA6C82EB2A1BC5B3007B98F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C82EA2A1BC5B3007B98F0 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 		DA6C831C2A1D13AB007B98F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6C831B2A1D13AB007B98F0 /* Localizable.strings */; };
 		DA6C831E2A1D156C007B98F0 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */; };
 		DA6C83202A1D2025007B98F0 /* CardSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */; };
+		DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140F52A2698E00015AD34 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA46EA592A2599E10086CE5F /* FlashcardsContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashcardsContainer.xcdatamodel; sourceTree = "<group>"; };
 		DA6C82E32A1BC5B0007B98F0 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C82E62A1BC5B0007B98F0 /* FlashcardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsApp.swift; sourceTree = "<group>"; };
 		DA6C82E82A1BC5B0007B98F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		DA6C831B2A1D13AB007B98F0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetsViewModel.swift; sourceTree = "<group>"; };
+		DA8140F52A2698E00015AD34 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +94,10 @@
 				DA6C83102A1BD18C007B98F0 /* Model */,
 				DA6C83122A1BD199007B98F0 /* View */,
 				DA6C83112A1BD193007B98F0 /* ViewModel */,
+				DA8140F42A2698D10015AD34 /* Services */,
 				DA6C82E62A1BC5B0007B98F0 /* FlashcardsApp.swift */,
 				DA6C82E82A1BC5B0007B98F0 /* ContentView.swift */,
+				DA46EA582A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld */,
 				DA6C831B2A1D13AB007B98F0 /* Localizable.strings */,
 				DA6C82EA2A1BC5B3007B98F0 /* Assets.xcassets */,
 				DA6C82EC2A1BC5B3007B98F0 /* Preview Content */,
@@ -140,6 +146,14 @@
 				DA6C83172A1BD2B2007B98F0 /* SettingsView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DA8140F42A2698D10015AD34 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA8140F52A2698E00015AD34 /* CoreDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +259,9 @@
 			files = (
 				DA6C83182A1BD2B2007B98F0 /* SettingsView.swift in Sources */,
 				DA6C82E92A1BC5B0007B98F0 /* ContentView.swift in Sources */,
+				DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */,
 				DA6C83162A1BD294007B98F0 /* QuizView.swift in Sources */,
+				DA46EA5A2A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld in Sources */,
 				DA6C831A2A1BE197007B98F0 /* CardSetsView.swift in Sources */,
 				DA6C83142A1BD1B8007B98F0 /* CardListView.swift in Sources */,
 				DA6C82E72A1BC5B0007B98F0 /* FlashcardsApp.swift in Sources */,
@@ -403,7 +419,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,7 +449,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +534,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DA46EA582A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DA46EA592A2599E10086CE5F /* FlashcardsContainer.xcdatamodel */,
+			);
+			currentVersion = DA46EA592A2599E10086CE5F /* FlashcardsContainer.xcdatamodel */;
+			path = FlashcardsContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DA6C82DB2A1BC5B0007B98F0 /* Project object */;
 }

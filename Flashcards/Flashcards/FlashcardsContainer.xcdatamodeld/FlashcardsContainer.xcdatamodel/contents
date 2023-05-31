@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="audioPath" optional="YES" attributeType="String"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="definition" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="prompt" optional="YES" attributeType="String"/>
+        <relationship name="set" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SetEntity" inverseName="cards" inverseEntity="SetEntity"/>
+    </entity>
+    <entity name="SetEntity" representedClassName="SetEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="set" inverseEntity="CardEntity"/>
+    </entity>
+</model>
