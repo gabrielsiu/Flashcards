@@ -21,6 +21,10 @@
 		DA6C831E2A1D156C007B98F0 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */; };
 		DA6C83202A1D2025007B98F0 /* CardSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */; };
 		DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140F52A2698E00015AD34 /* CoreDataService.swift */; };
+		DA8140F82A27C2D60015AD34 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140F72A27C2D60015AD34 /* Card.swift */; };
+		DA8140FA2A27C4060015AD34 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140F92A27C4060015AD34 /* CreateCardView.swift */; };
+		DA8140FC2A27C8AF0015AD34 /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */; };
+		DA8141002A27F5E30015AD34 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140FF2A27F5E30015AD34 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetsViewModel.swift; sourceTree = "<group>"; };
 		DA8140F52A2698E00015AD34 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		DA8140F72A27C2D60015AD34 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		DA8140F92A27C4060015AD34 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
+		DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
+		DA8140FF2A27F5E30015AD34 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 		DA6C83102A1BD18C007B98F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DA8140F72A27C2D60015AD34 /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +142,7 @@
 			children = (
 				DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */,
 				DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */,
+				DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -140,8 +150,7 @@
 		DA6C83122A1BD199007B98F0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA6C83192A1BE197007B98F0 /* CardSetsView.swift */,
-				DA6C83132A1BD1B8007B98F0 /* CardListView.swift */,
+				DA8141012A280CFA0015AD34 /* Cards */,
 				DA6C83152A1BD294007B98F0 /* QuizView.swift */,
 				DA6C83172A1BD2B2007B98F0 /* SettingsView.swift */,
 			);
@@ -154,6 +163,17 @@
 				DA8140F52A2698E00015AD34 /* CoreDataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DA8141012A280CFA0015AD34 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				DA6C83192A1BE197007B98F0 /* CardSetsView.swift */,
+				DA6C83132A1BD1B8007B98F0 /* CardListView.swift */,
+				DA8140F92A27C4060015AD34 /* CreateCardView.swift */,
+				DA8140FF2A27F5E30015AD34 /* CardView.swift */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8141002A27F5E30015AD34 /* CardView.swift in Sources */,
 				DA6C83182A1BD2B2007B98F0 /* SettingsView.swift in Sources */,
 				DA6C82E92A1BC5B0007B98F0 /* ContentView.swift in Sources */,
 				DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */,
@@ -264,9 +285,12 @@
 				DA46EA5A2A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld in Sources */,
 				DA6C831A2A1BE197007B98F0 /* CardSetsView.swift in Sources */,
 				DA6C83142A1BD1B8007B98F0 /* CardListView.swift in Sources */,
+				DA8140FC2A27C8AF0015AD34 /* CreateCardViewModel.swift in Sources */,
 				DA6C82E72A1BC5B0007B98F0 /* FlashcardsApp.swift in Sources */,
+				DA8140FA2A27C4060015AD34 /* CreateCardView.swift in Sources */,
 				DA6C831E2A1D156C007B98F0 /* CardListViewModel.swift in Sources */,
 				DA6C83202A1D2025007B98F0 /* CardSetsViewModel.swift in Sources */,
+				DA8140F82A27C2D60015AD34 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,6 @@ private enum Constants {
 
 struct CardSetsView: View {
   @StateObject private var viewModel: CardSetsViewModel
-  
   @State var newSetName = ""
   
   init(_ viewModel: CardSetsViewModel) {
@@ -26,14 +25,18 @@ struct CardSetsView: View {
   }
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       List {
         ForEach(viewModel.sets) { setEntity in
-          VStack(alignment: .leading) {
-            Text(setEntity.name ?? "")
-              .font(.headline)
-            Text("\(setEntity.cards?.count ?? 0) cards")
-              .font(.caption)
+          NavigationLink {
+            CardListView(CardListViewModel(CoreDataService())) // TODO: consolodate service
+          } label: {
+            VStack(alignment: .leading) {
+              Text(setEntity.name ?? "")
+                .font(.headline)
+              Text("\(setEntity.cards?.count ?? 0) cards")
+                .font(.caption)
+            }
           }
         }
         .onDelete(perform: viewModel.deleteSet)
@@ -51,6 +54,7 @@ struct CardSetsView: View {
         TextField("Name", text: $newSetName)
         Button(Constants.alertTitle) {
           viewModel.addSet(newSetName)
+          newSetName = ""
         }
         Button(Constants.cancel, role: .cancel, action: {})
       }, message: {

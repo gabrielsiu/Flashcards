@@ -17,3 +17,6 @@
 "alertTitle" = "Add Set";
 "alertMessage" = "Enter the name of the set";
 "cancel" = "Cancel";
+
+// Cards
+"noCards" = "No Cards";
