@@ -12,11 +12,19 @@
 "quiz" = "Quiz";
 "settings" = "Settings";
 
+// General
+"cancel" = "Cancel";
+"done" = "Done";
+
 // Sets
 "noSets" = "No Sets";
 "alertTitle" = "Add Set";
 "alertMessage" = "Enter the name of the set";
-"cancel" = "Cancel";
 
 // Cards
 "noCards" = "No Cards";
+
+// Audio
+"noRecording" = "To attach audio to this card, press the Record button, and Stop when you're finished recording";
+"recording" = "Recording...";
+"recordingExists" = "Press the Play button to hear your audio, the Delete button to delete your recording, or the Record button to re-record your audio";

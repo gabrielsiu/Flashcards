@@ -14,11 +14,16 @@ private enum Constants {
 }
 
 struct CreateCardView: View {
+  @StateObject private var viewModel = CreateCardViewModel()
   @Binding var isPresented: Bool
+  
+  @State var showingRecordAudioView = false
+  @State var recordingExists = false
   @State private var term = ""
   @State private var definition = ""
   
   @State var isCardFlipped = false
+  private let cardID = UUID()
   
   var body: some View {
     NavigationStack {
@@ -43,9 +48,26 @@ struct CreateCardView: View {
           .frame(height: Constants.textFieldHeight)
           .background(Color(UIColor.secondarySystemBackground))
           .cornerRadius(Constants.textFieldCornerRadius)
+        Button {
+          showingRecordAudioView = true
+        } label: {
+          HStack {
+            Image(systemName: recordingExists ? "waveform.and.mic" : "mic.fill.badge.plus")
+            Text(recordingExists ? "View/Edit Audio Recording" : "Add Audio Recording")
+          }
+        }
+        .frame(height: Constants.textFieldHeight)
         Spacer()
       }
       .padding([.leading, .trailing])
+      .onAppear {
+        recordingExists = viewModel.checkIfRecordingExists(cardID)
+      }
+      .sheet(isPresented: $showingRecordAudioView, onDismiss: {
+        recordingExists = viewModel.checkIfRecordingExists(cardID)
+      }, content: {
+        RecordAudioView(isPresented: $showingRecordAudioView, viewModel: RecordAudioViewModel(cardID))
+      })
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           Button("Cancel", role: .cancel) {
@@ -54,7 +76,13 @@ struct CreateCardView: View {
         }
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Done") {
-            print("done")
+//            let card = Card(
+//              term: term,
+//              definition: definition,
+//              audioPath: nil
+//            )
+            let viewModel = RecordAudioViewModel(cardID)
+            
           }
           .disabled(term == "" || definition == "")
         }

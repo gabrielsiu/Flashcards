@@ -25,6 +25,8 @@
 		DA8140FA2A27C4060015AD34 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140F92A27C4060015AD34 /* CreateCardView.swift */; };
 		DA8140FC2A27C8AF0015AD34 /* CreateCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */; };
 		DA8141002A27F5E30015AD34 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140FF2A27F5E30015AD34 /* CardView.swift */; };
+		DA8141032A281DE10015AD34 /* RecordAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8141022A281DE10015AD34 /* RecordAudioView.swift */; };
+		DA8141052A281DEE0015AD34 /* RecordAudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		DA8140F92A27C4060015AD34 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardViewModel.swift; sourceTree = "<group>"; };
 		DA8140FF2A27F5E30015AD34 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DA8141022A281DE10015AD34 /* RecordAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioView.swift; sourceTree = "<group>"; };
+		DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				DA6C831F2A1D2025007B98F0 /* CardSetsViewModel.swift */,
 				DA6C831D2A1D156C007B98F0 /* CardListViewModel.swift */,
 				DA8140FB2A27C8AF0015AD34 /* CreateCardViewModel.swift */,
+				DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				DA6C83132A1BD1B8007B98F0 /* CardListView.swift */,
 				DA8140F92A27C4060015AD34 /* CreateCardView.swift */,
 				DA8140FF2A27F5E30015AD34 /* CardView.swift */,
+				DA8141022A281DE10015AD34 /* RecordAudioView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 			files = (
 				DA8141002A27F5E30015AD34 /* CardView.swift in Sources */,
 				DA6C83182A1BD2B2007B98F0 /* SettingsView.swift in Sources */,
+				DA8141052A281DEE0015AD34 /* RecordAudioViewModel.swift in Sources */,
 				DA6C82E92A1BC5B0007B98F0 /* ContentView.swift in Sources */,
 				DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */,
 				DA6C83162A1BD294007B98F0 /* QuizView.swift in Sources */,
@@ -289,6 +296,7 @@
 				DA6C82E72A1BC5B0007B98F0 /* FlashcardsApp.swift in Sources */,
 				DA8140FA2A27C4060015AD34 /* CreateCardView.swift in Sources */,
 				DA6C831E2A1D156C007B98F0 /* CardListViewModel.swift in Sources */,
+				DA8141032A281DE10015AD34 /* RecordAudioView.swift in Sources */,
 				DA6C83202A1D2025007B98F0 /* CardSetsViewModel.swift in Sources */,
 				DA8140F82A27C2D60015AD34 /* Card.swift in Sources */,
 			);
@@ -438,6 +446,7 @@
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record audio to associate with a flashcard";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -468,6 +477,7 @@
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record audio to associate with a flashcard";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
