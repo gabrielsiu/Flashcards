@@ -14,16 +14,21 @@ private enum Constants {
 }
 
 struct CreateCardView: View {
-  @StateObject private var viewModel = CreateCardViewModel()
+  @StateObject private var viewModel: CreateCardViewModel
   @Binding var isPresented: Bool
-  
   @State var showingRecordAudioView = false
   @State var recordingExists = false
-  @State private var term = ""
-  @State private var definition = ""
+  @State private var term: String
+  @State private var definition: String
   
   @State var isCardFlipped = false
-  private let cardID = UUID()
+  
+  init(isPresented: Binding<Bool>, viewModel: CreateCardViewModel) {
+    self._isPresented = isPresented
+    _viewModel = StateObject(wrappedValue: viewModel)
+    term = viewModel.existingCardTerm
+    definition = viewModel.existingCardDefinition
+  }
   
   var body: some View {
     NavigationStack {
@@ -61,12 +66,12 @@ struct CreateCardView: View {
       }
       .padding([.leading, .trailing])
       .onAppear {
-        recordingExists = viewModel.checkIfRecordingExists(cardID)
+        recordingExists = viewModel.checkIfRecordingExists(viewModel.cardID)
       }
       .sheet(isPresented: $showingRecordAudioView, onDismiss: {
-        recordingExists = viewModel.checkIfRecordingExists(cardID)
+        recordingExists = viewModel.checkIfRecordingExists(viewModel.cardID)
       }, content: {
-        RecordAudioView(isPresented: $showingRecordAudioView, viewModel: RecordAudioViewModel(cardID))
+        RecordAudioView(isPresented: $showingRecordAudioView, viewModel: RecordAudioViewModel(viewModel.cardID))
       })
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -76,13 +81,13 @@ struct CreateCardView: View {
         }
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Done") {
-//            let card = Card(
-//              term: term,
-//              definition: definition,
-//              audioPath: nil
-//            )
-            let viewModel = RecordAudioViewModel(cardID)
-            
+            let card = Card(
+              term: term,
+              definition: definition,
+              audioPath: viewModel.audioFilePath(viewModel.cardID)
+            )
+            viewModel.addCard(card)
+            isPresented = false
           }
           .disabled(term == "" || definition == "")
         }

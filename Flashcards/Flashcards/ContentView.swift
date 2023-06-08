@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+  private let coreDataService = CoreDataService()
   var body: some View {
     let cardsTitle: LocalizedStringKey = "cards"
     let quizTitle: LocalizedStringKey = "quiz"
     let settingsTitle: LocalizedStringKey = "settings"
     
     TabView {
-      CardSetsView(CardSetsViewModel(CoreDataService()))
+      CardSetsView(
+        viewModel: CardSetsViewModel(coreDataService: coreDataService),
+        coreDataService: coreDataService
+      )
         .tabItem {
           Label(cardsTitle, systemImage: "square.3.stack.3d")
         }

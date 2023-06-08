@@ -21,43 +21,46 @@ struct RecordAudioView: View {
             .font(.subheadline)
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        Spacer()
-        HStack(spacing: 20) {
-          // Record Audio
-          Button {
-            if viewModel.audioRecorder == nil {
-              viewModel.deleteRecording()
-              viewModel.startRecording()
-            } else {
-              viewModel.finishRecording(true)
-            }
-          } label: {
-            Image(systemName: viewModel.isRecording ? "stop.circle.fill" : "mic.circle.fill")
-              .foregroundColor(.red)
-              .font(.system(size: 60))
-          }
-          
-          if viewModel.recordingData != nil {
-            // Start / Stop Playback
+        
+        if viewModel.recordPermissionGranted {
+          Spacer()
+          HStack(spacing: 20) {
+            // Record Audio
             Button {
-              if viewModel.isPlaying {
-                viewModel.stopPlayback()
+              if viewModel.audioRecorder == nil {
+                viewModel.deleteRecording()
+                viewModel.startRecording()
               } else {
-                viewModel.startPlayback()
+                viewModel.finishRecording(true)
               }
             } label: {
-              Image(systemName: viewModel.isPlaying ? "stop.circle.fill" : "play.circle.fill")
-                .foregroundColor(.blue)
+              Image(systemName: viewModel.isRecording ? "stop.circle.fill" : "mic.circle.fill")
+                .foregroundColor(.red)
                 .font(.system(size: 60))
             }
             
-            // Delete Recording
-            Button {
-              viewModel.deleteRecording()
-            } label: {
-              Image(systemName: "trash.circle.fill")
-                .foregroundColor(.gray)
-                .font(.system(size: 60))
+            if viewModel.recordingData != nil {
+              // Start / Stop Playback
+              Button {
+                if viewModel.isPlaying {
+                  viewModel.stopPlayback()
+                } else {
+                  viewModel.startPlayback()
+                }
+              } label: {
+                Image(systemName: viewModel.isPlaying ? "stop.circle.fill" : "play.circle.fill")
+                  .foregroundColor(.blue)
+                  .font(.system(size: 60))
+              }
+              
+              // Delete Recording
+              Button {
+                viewModel.deleteRecording()
+              } label: {
+                Image(systemName: "trash.circle.fill")
+                  .foregroundColor(.gray)
+                  .font(.system(size: 60))
+              }
             }
           }
         }

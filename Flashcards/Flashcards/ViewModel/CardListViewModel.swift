@@ -13,13 +13,13 @@ class CardListViewModel: ObservableObject {
   
   let coreDataService: CoreDataService
   
-  init(_ coreDataService: CoreDataService) {
+  init(coreDataService: CoreDataService) {
     self.coreDataService = coreDataService
-    getCards()
   }
   
-  func getCards() {
+  func getCards(from setEntity: SetEntity) {
     let request = NSFetchRequest<CardEntity>(entityName: "CardEntity")
+    request.predicate = NSPredicate(format: "set == %@", setEntity)
     
     do {
       cards = try coreDataService.context.fetch(request)
@@ -28,22 +28,11 @@ class CardListViewModel: ObservableObject {
     }
   }
   
-  func addCard(_ name: String) {
-    let newSet = SetEntity(context: coreDataService.context)
-    newSet.name = name
-    newSet.createdDate = Date()
-    save()
-  }
-  
-  func deleteCard(_ indexSet: IndexSet) {
+  func deleteCard(_ indexSet: IndexSet, from setEntity: SetEntity) {
     guard let index = indexSet.first else { return }
     let card = cards[index]
     coreDataService.context.delete(card)
-    save()
-  }
-  
-  func save() {
     coreDataService.save()
-    getCards()
+    getCards(from: setEntity)
   }
 }

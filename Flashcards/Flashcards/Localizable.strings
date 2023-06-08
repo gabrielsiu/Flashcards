@@ -25,6 +25,7 @@
 "noCards" = "No Cards";
 
 // Audio
+"recordPermissionNotGranted" = "Permission to access the microphone was not granted for this app. To give this app permission to record audio, go to Settings > Privacy > Microphone, and re-enable permission for Flashcards";
 "noRecording" = "To attach audio to this card, press the Record button, and Stop when you're finished recording";
 "recording" = "Recording...";
 "recordingExists" = "Press the Play button to hear your audio, the Delete button to delete your recording, or the Record button to re-record your audio";

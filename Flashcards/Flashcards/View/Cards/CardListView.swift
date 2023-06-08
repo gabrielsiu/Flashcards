@@ -16,23 +16,38 @@ struct CardListView: View {
   @StateObject private var viewModel: CardListViewModel
   @State var showingCreateCardView = false
   
-  init(_ viewModel: CardListViewModel) {
+  private let coreDataService: CoreDataService
+  private let setEntity: SetEntity
+  
+  init(viewModel: CardListViewModel, coreDataService: CoreDataService, setEntity: SetEntity) {
     _viewModel = StateObject(wrappedValue: viewModel)
+    self.coreDataService = coreDataService
+    self.setEntity = setEntity
   }
   
   var body: some View {
     NavigationStack {
       List {
         ForEach(viewModel.cards) { card in
-//          VStack(alignment: .leading) {
-//            Text(setEntity.name ?? "")
-//              .font(.headline)
-//            Text("\(setEntity.cards?.count ?? 0) cards")
-//              .font(.caption)
-//          }
+          NavigationLink {
+            QuizView()
+          } label: {
+            VStack(alignment: .leading) {
+              Text(card.term ?? "")
+                .font(.headline)
+              Text(card.definition ?? "")
+                .font(.caption)
+            }
+          }
         }
+        .onDelete(perform: { indexSet in
+          viewModel.deleteCard(indexSet, from: setEntity)
+        })
       }
       .navigationTitle(Constants.title)
+      .onAppear {
+        viewModel.getCards(from: setEntity)
+      }
       .toolbar {
         Button {
           showingCreateCardView = true
@@ -40,9 +55,17 @@ struct CardListView: View {
           Image(systemName: "plus")
         }
       }
-      .sheet(isPresented: $showingCreateCardView) {
-        CreateCardView(isPresented: $showingCreateCardView)
-      }
+      .sheet(isPresented: $showingCreateCardView, onDismiss: {
+        viewModel.getCards(from: setEntity)
+      }, content: {
+        CreateCardView(
+          isPresented: $showingCreateCardView,
+          viewModel: CreateCardViewModel(
+            coreDataService: coreDataService,
+            setEntity: setEntity
+          )
+        )
+      })
       .overlay(Group {
         if viewModel.cards.isEmpty {
           Text(Constants.noCards)
@@ -54,6 +77,6 @@ struct CardListView: View {
 
 struct CardListView_Previews: PreviewProvider {
   static var previews: some View {
-    CardListView(CardListViewModel(CoreDataService()))
+    CardListView(viewModel: CardListViewModel(coreDataService: CoreDataService()), coreDataService: CoreDataService(), setEntity: SetEntity())
   }
 }

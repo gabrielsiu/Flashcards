@@ -14,7 +14,7 @@ class CardSetsViewModel: ObservableObject {
   
   let coreDataService: CoreDataService
   
-  init(_ coreDataService: CoreDataService) {
+  init(coreDataService: CoreDataService) {
     self.coreDataService = coreDataService
     getSets()
   }
@@ -48,4 +48,3 @@ class CardSetsViewModel: ObservableObject {
     getSets()
   }
 }
-

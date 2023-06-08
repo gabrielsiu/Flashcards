@@ -20,8 +20,11 @@ struct CardSetsView: View {
   @StateObject private var viewModel: CardSetsViewModel
   @State var newSetName = ""
   
-  init(_ viewModel: CardSetsViewModel) {
+  private let coreDataService: CoreDataService
+  
+  init(viewModel: CardSetsViewModel, coreDataService: CoreDataService) {
     _viewModel = StateObject(wrappedValue: viewModel)
+    self.coreDataService = coreDataService
   }
   
   var body: some View {
@@ -29,7 +32,11 @@ struct CardSetsView: View {
       List {
         ForEach(viewModel.sets) { setEntity in
           NavigationLink {
-            CardListView(CardListViewModel(CoreDataService())) // TODO: consolodate service
+            CardListView(
+              viewModel: CardListViewModel(coreDataService: coreDataService),
+              coreDataService: coreDataService,
+              setEntity: setEntity
+            ) // TODO: consolodate service
           } label: {
             VStack(alignment: .leading) {
               Text(setEntity.name ?? "")
@@ -42,6 +49,9 @@ struct CardSetsView: View {
         .onDelete(perform: viewModel.deleteSet)
       }
       .navigationTitle(Constants.title)
+      .onAppear {
+        viewModel.getSets()
+      }
       .toolbar {
         Button {
           viewModel.showingAlert = true
@@ -71,6 +81,6 @@ struct CardSetsView: View {
 
 struct CardSetsView_Previews: PreviewProvider {
   static var previews: some View {
-    CardSetsView(CardSetsViewModel(CoreDataService()))
+    CardSetsView(viewModel: CardSetsViewModel(coreDataService: CoreDataService()), coreDataService: CoreDataService())
   }
 }

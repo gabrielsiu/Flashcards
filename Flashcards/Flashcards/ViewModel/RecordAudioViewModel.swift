@@ -17,6 +17,7 @@ class RecordAudioViewModel: NSObject, ObservableObject {
   let cardID: UUID
   let folderName = "Flashcards_Audio_Recordings"
   
+  @Published var recordPermissionGranted = true
   @Published var isRecording = false
   @Published var isPlaying = false
   @Published var recordingData: Data? = nil
@@ -29,11 +30,9 @@ class RecordAudioViewModel: NSObject, ObservableObject {
     do {
       try recordingSession?.setCategory(.playAndRecord)
       try recordingSession?.setActive(true)
-      recordingSession?.requestRecordPermission({ allowed in
-        if allowed {
-          
-        } else {
-          
+      recordingSession?.requestRecordPermission({ [weak self] allowed in
+        if !allowed {
+          self?.recordPermissionGranted = false
         }
       })
     } catch {
@@ -147,6 +146,9 @@ class RecordAudioViewModel: NSObject, ObservableObject {
   }
   
   func descriptionText() -> LocalizedStringKey {
+    if !recordPermissionGranted {
+      return "recordPermissionNotGranted"
+    }
     if isRecording {
       return "recording"
     }
