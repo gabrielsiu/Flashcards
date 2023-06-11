@@ -14,8 +14,9 @@ private enum Constants {
 
 struct CardListView: View {
   @StateObject private var viewModel: CardListViewModel
-  @State var showingCreateCardView = false
-  @State var showingEditCardView = false
+  @State private var showingCreateCardView = false
+  @State private var showingEditCardView = false
+  @State private var searchText = ""
   
   private let coreDataService: CoreDataService
   private let setEntity: SetEntity
@@ -29,7 +30,7 @@ struct CardListView: View {
   var body: some View {
     NavigationStack {
       List { // TODO: Fix bug when selecting any card that's not the first upon first load
-        ForEach(viewModel.cards) { card in
+        ForEach(searchResults) { card in
           NavigationLink(isActive: $showingEditCardView) {
             EditCardView(
               viewModel: EditCardViewModel(
@@ -51,6 +52,7 @@ struct CardListView: View {
         })
       }
       .navigationTitle(Constants.title)
+      .searchable(text: $searchText)
       .onAppear {
         viewModel.getCards(from: setEntity)
       }
@@ -77,6 +79,15 @@ struct CardListView: View {
           Text(Constants.noCards)
         }
       })
+    }
+  }
+  
+  var searchResults: [CardEntity] {
+    guard !searchText.isEmpty else { return viewModel.cards }
+    return viewModel.cards.filter {
+      if let term = $0.term, term.contains(searchText) { return true }
+      if let definition = $0.definition, definition.contains(searchText) { return true }
+      return false
     }
   }
 }

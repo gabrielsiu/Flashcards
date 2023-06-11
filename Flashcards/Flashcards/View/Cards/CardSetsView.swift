@@ -18,7 +18,8 @@ private enum Constants {
 
 struct CardSetsView: View {
   @StateObject private var viewModel: CardSetsViewModel
-  @State var newSetName = ""
+  @State private var newSetName = ""
+  @State private var searchText = ""
   
   private let coreDataService: CoreDataService
   
@@ -30,7 +31,7 @@ struct CardSetsView: View {
   var body: some View {
     NavigationStack {
       List {
-        ForEach(viewModel.sets) { setEntity in
+        ForEach(searchResults) { setEntity in
           NavigationLink {
             CardListView(
               viewModel: CardListViewModel(coreDataService: coreDataService),
@@ -49,6 +50,7 @@ struct CardSetsView: View {
         .onDelete(perform: viewModel.deleteSet)
       }
       .navigationTitle(Constants.title)
+      .searchable(text: $searchText)
       .onAppear {
         viewModel.getSets()
       }
@@ -75,6 +77,14 @@ struct CardSetsView: View {
           Text(Constants.noSets)
         }
       })
+    }
+  }
+  
+  var searchResults: [SetEntity] {
+    guard !searchText.isEmpty else { return viewModel.sets }
+    return viewModel.sets.filter {
+      if let name = $0.name, name.contains(searchText) { return true }
+      return false
     }
   }
 }
