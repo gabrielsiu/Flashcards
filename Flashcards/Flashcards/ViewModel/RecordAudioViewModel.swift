@@ -15,7 +15,7 @@ class RecordAudioViewModel: NSObject, ObservableObject {
   var recordingSession: AVAudioSession?
   
   let cardID: UUID
-  let folderName = "Flashcards_Audio_Recordings"
+  let folderName = "Flashcards_Audio_Recordings/"
   
   @Published var recordPermissionGranted = true
   @Published var isRecording = false
@@ -26,6 +26,7 @@ class RecordAudioViewModel: NSObject, ObservableObject {
     cardID = id
     recordingSession = AVAudioSession.sharedInstance()
     super.init()
+    createFolderIfNeeded()
     getRecordingData()
     do {
       try recordingSession?.setCategory(.playAndRecord)

@@ -1,8 +1,8 @@
 //
-//  CreateCardView.swift
+//  EditCardView.swift
 //  Flashcards
 //
-//  Created by Gabriel Siu on 2023-05-31.
+//  Created by Gabriel Siu on 2023-06-11.
 //
 
 import SwiftUI
@@ -13,19 +13,19 @@ private enum Constants {
   static let textFieldCornerRadius: CGFloat = 10
 }
 
-struct CreateCardView: View {
-  @StateObject private var viewModel: CreateCardViewModel
-  @Binding var isPresented: Bool
+struct EditCardView: View {
+  @StateObject private var viewModel: EditCardViewModel
   @State var showingRecordAudioView = false
   @State var recordingExists = false
-  @State private var term = ""
-  @State private var definition = ""
+  @State private var term: String
+  @State private var definition: String
   
   @State var isCardFlipped = false
   
-  init(isPresented: Binding<Bool>, viewModel: CreateCardViewModel) {
-    self._isPresented = isPresented
+  init(viewModel: EditCardViewModel) {
     _viewModel = StateObject(wrappedValue: viewModel)
+    term = viewModel.existingCardTerm
+    definition = viewModel.existingCardDefinition
   }
   
   var body: some View {
@@ -72,20 +72,14 @@ struct CreateCardView: View {
         RecordAudioView(isPresented: $showingRecordAudioView, viewModel: RecordAudioViewModel(viewModel.cardID))
       })
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancel", role: .cancel) {
-            isPresented = false
-          }
-        }
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Done") {
+          Button("Save") {
             let card = Card(
               term: term,
               definition: definition,
               audioPath: viewModel.audioFilePath()
             )
-            viewModel.addCard(card)
-            isPresented = false
+            viewModel.updateCard(card: card)
           }
           .disabled(term == "" || definition == "")
         }

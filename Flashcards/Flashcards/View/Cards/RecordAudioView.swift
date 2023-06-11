@@ -67,18 +67,14 @@ struct RecordAudioView: View {
       }
       .padding([.leading, .trailing])
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancel", role: .cancel) {
-            isPresented = false
-          }
-        }
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Done") {
             isPresented = false
           }
-          .disabled(viewModel.recordingData == nil)
+          .disabled(viewModel.isRecording)
         }
       }
+      .interactiveDismissDisabled(viewModel.isRecording)
     }
   }
 }

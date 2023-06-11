@@ -15,6 +15,7 @@ private enum Constants {
 struct CardListView: View {
   @StateObject private var viewModel: CardListViewModel
   @State var showingCreateCardView = false
+  @State var showingEditCardView = false
   
   private let coreDataService: CoreDataService
   private let setEntity: SetEntity
@@ -27,10 +28,15 @@ struct CardListView: View {
   
   var body: some View {
     NavigationStack {
-      List {
+      List { // TODO: Fix bug when selecting any card that's not the first upon first load
         ForEach(viewModel.cards) { card in
-          NavigationLink {
-            QuizView()
+          NavigationLink(isActive: $showingEditCardView) {
+            EditCardView(
+              viewModel: EditCardViewModel(
+                existingCard: card,
+                coreDataService: coreDataService
+              )
+            )
           } label: {
             VStack(alignment: .leading) {
               Text(card.term ?? "")

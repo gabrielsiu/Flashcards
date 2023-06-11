@@ -20,7 +20,7 @@ struct ContentView: View {
         coreDataService: coreDataService
       )
         .tabItem {
-          Label(cardsTitle, systemImage: "square.3.stack.3d")
+          Label(cardsTitle, systemImage: "rectangle.portrait.on.rectangle.portrait")
         }
       QuizView()
         .tabItem {

@@ -11,6 +11,5 @@ struct Card {
   let term: String
   let definition: String
   let audioPath: String?
-  let id = UUID()
   let createdDate = Date()
 }

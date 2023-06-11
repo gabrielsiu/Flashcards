@@ -1,22 +1,32 @@
 //
-//  CreateCardViewModel.swift
+//  EditCardViewModel.swift
 //  Flashcards
 //
-//  Created by Gabriel Siu on 2023-05-31.
+//  Created by Gabriel Siu on 2023-06-11.
 //
 
 import Foundation
 
-class CreateCardViewModel: ObservableObject {
+class EditCardViewModel: ObservableObject {
   private let folderName = "Flashcards_Audio_Recordings/"
   private let coreDataService: CoreDataService
-  private let setEntity: SetEntity
-  let cardID: UUID
+  private var existingCard: CardEntity
   
-  init(coreDataService: CoreDataService, setEntity: SetEntity) {
+  var existingCardTerm: String {
+    existingCard.term ?? ""
+  }
+  
+  var existingCardDefinition: String {
+    existingCard.definition ?? ""
+  }
+  
+  var cardID: UUID {
+    existingCard.id ?? UUID()
+  }
+  
+  init(existingCard: CardEntity, coreDataService: CoreDataService) {
+    self.existingCard = existingCard
     self.coreDataService = coreDataService
-    self.setEntity = setEntity
-    cardID = UUID()
   }
   
   // TODO: Refactor repeated logic
@@ -35,14 +45,14 @@ class CreateCardViewModel: ObservableObject {
     FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
   }
   
-  func addCard(_ card: Card) {
-    let newCard = CardEntity(context: coreDataService.context)
-    newCard.audioPath = card.audioPath
-    newCard.createdDate = card.createdDate
-    newCard.definition = card.definition
-    newCard.id = cardID
-    newCard.term = card.term
-    newCard.set = setEntity
+  func moveCard(cardEntity: CardEntity, to setEntity: SetEntity) {
+    
+  }
+  
+  func updateCard(card: Card) {
+    existingCard.audioPath = checkIfRecordingExists() ? card.audioPath : nil
+    existingCard.definition = card.definition
+    existingCard.term = card.term
     coreDataService.save()
   }
 }
