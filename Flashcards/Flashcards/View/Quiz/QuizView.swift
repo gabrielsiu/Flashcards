@@ -18,7 +18,7 @@ struct QuizView: View {
           imageName: "rectangle.portrait.on.rectangle.portrait.angled"
         )
         .onTapGesture {
-          
+          // QuizTypeView
         }
         Spacer()
       }
