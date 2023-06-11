@@ -15,7 +15,6 @@ private enum Constants {
 struct CardListView: View {
   @StateObject private var viewModel: CardListViewModel
   @State private var showingCreateCardView = false
-  @State private var showingEditCardView = false
   @State private var searchText = ""
   
   private let coreDataService: CoreDataService
@@ -29,9 +28,9 @@ struct CardListView: View {
   
   var body: some View {
     NavigationStack {
-      List { // TODO: Fix bug when selecting any card that's not the first upon first load
+      List {
         ForEach(searchResults) { card in
-          NavigationLink(isActive: $showingEditCardView) {
+          NavigationLink {
             EditCardView(
               viewModel: EditCardViewModel(
                 existingCard: card,
