@@ -31,8 +31,32 @@ class CardListViewModel: ObservableObject {
   func deleteCard(_ indexSet: IndexSet, from setEntity: SetEntity) {
     guard let index = indexSet.first else { return }
     let card = cards[index]
+    deleteRecording(card.id ?? UUID())
     coreDataService.context.delete(card)
     coreDataService.save()
     getCards(from: setEntity)
+  }
+  
+  private func deleteRecording(_ cardID: UUID) {
+    let folderName = "Flashcards_Audio_Recordings/"
+    let fileName = folderName.appending(cardID.uuidString).appending(".m4a")
+    guard let filePath = getDocumentsDirectory()?.appendingPathComponent(fileName).path() else {
+      print("Error getting file path")
+      return
+    }
+    guard FileManager.default.fileExists(atPath: filePath) else {
+      print("File doesn't exist")
+      return
+    }
+    
+    do {
+      try FileManager.default.removeItem(atPath: filePath)
+    } catch {
+      print("Error deleting the recording: \(error)")
+    }
+  }
+  
+  private func getDocumentsDirectory() -> URL? {
+    FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
   }
 }

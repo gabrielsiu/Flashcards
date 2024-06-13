@@ -33,6 +33,7 @@ class CardSetsViewModel: ObservableObject {
     let newSet = SetEntity(context: coreDataService.context)
     newSet.name = name
     newSet.createdDate = Date()
+    newSet.id = UUID()
     save()
   }
   

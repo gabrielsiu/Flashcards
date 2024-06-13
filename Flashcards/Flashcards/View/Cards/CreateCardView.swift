@@ -82,7 +82,8 @@ struct CreateCardView: View {
             let card = Card(
               term: term,
               definition: definition,
-              audioPath: viewModel.audioFilePath()
+              audioPath: viewModel.audioFilePath(),
+              id: UUID() // Shouldn't be used
             )
             viewModel.addCard(card)
             isPresented = false

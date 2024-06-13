@@ -77,7 +77,8 @@ struct EditCardView: View {
             let card = Card(
               term: term,
               definition: definition,
-              audioPath: viewModel.audioFilePath()
+              audioPath: viewModel.audioFilePath(),
+              id: UUID() // Shouldn't be used
             )
             viewModel.updateCard(card: card)
           }

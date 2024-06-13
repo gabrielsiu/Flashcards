@@ -10,6 +10,7 @@
     </entity>
     <entity name="SetEntity" representedClassName="SetEntity" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="set" inverseEntity="CardEntity"/>
     </entity>

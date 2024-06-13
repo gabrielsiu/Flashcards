@@ -19,7 +19,6 @@
 		DA6C82EE2A1BC5B3007B98F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C82ED2A1BC5B3007B98F0 /* Preview Assets.xcassets */; };
 		DA6C82F82A1BC5B3007B98F0 /* FlashcardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C82F72A1BC5B3007B98F0 /* FlashcardsTests.swift */; };
 		DA6C83142A1BD1B8007B98F0 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C83132A1BD1B8007B98F0 /* CardListView.swift */; };
-		DA6C83162A1BD294007B98F0 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C83152A1BD294007B98F0 /* QuizView.swift */; };
 		DA6C83182A1BD2B2007B98F0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C83172A1BD2B2007B98F0 /* SettingsView.swift */; };
 		DA6C831A2A1BE197007B98F0 /* CardSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C83192A1BE197007B98F0 /* CardSetsView.swift */; };
 		DA6C831C2A1D13AB007B98F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6C831B2A1D13AB007B98F0 /* Localizable.strings */; };
@@ -32,6 +31,10 @@
 		DA8141002A27F5E30015AD34 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8140FF2A27F5E30015AD34 /* CardView.swift */; };
 		DA8141032A281DE10015AD34 /* RecordAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8141022A281DE10015AD34 /* RecordAudioView.swift */; };
 		DA8141052A281DEE0015AD34 /* RecordAudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */; };
+		DA8CF4EC2A37EF4B00D2442F /* QuizTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8CF4EB2A37EF4B00D2442F /* QuizTypesView.swift */; };
+		DA8CF4EE2A37F09B00D2442F /* FlashcardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8CF4ED2A37F09B00D2442F /* FlashcardsView.swift */; };
+		DA8CF4F02A37F0B900D2442F /* FlashcardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8CF4EF2A37F0B900D2442F /* FlashcardsViewModel.swift */; };
+		DA8CF4F22A3942ED00D2442F /* CardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8CF4F12A3942ED00D2442F /* CardSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +62,6 @@
 		DA6C82F32A1BC5B3007B98F0 /* FlashcardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashcardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C82F72A1BC5B3007B98F0 /* FlashcardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsTests.swift; sourceTree = "<group>"; };
 		DA6C83132A1BD1B8007B98F0 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
-		DA6C83152A1BD294007B98F0 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		DA6C83172A1BD2B2007B98F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA6C83192A1BE197007B98F0 /* CardSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetsView.swift; sourceTree = "<group>"; };
 		DA6C831B2A1D13AB007B98F0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -72,6 +74,10 @@
 		DA8140FF2A27F5E30015AD34 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DA8141022A281DE10015AD34 /* RecordAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioView.swift; sourceTree = "<group>"; };
 		DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAudioViewModel.swift; sourceTree = "<group>"; };
+		DA8CF4EB2A37EF4B00D2442F /* QuizTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTypesView.swift; sourceTree = "<group>"; };
+		DA8CF4ED2A37F09B00D2442F /* FlashcardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsView.swift; sourceTree = "<group>"; };
+		DA8CF4EF2A37F0B900D2442F /* FlashcardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsViewModel.swift; sourceTree = "<group>"; };
+		DA8CF4F12A3942ED00D2442F /* CardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +101,10 @@
 		DA0832232A35802800A5AAA0 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
-				DA6C83152A1BD294007B98F0 /* QuizView.swift */,
+				DA8CF4EB2A37EF4B00D2442F /* QuizTypesView.swift */,
 				DA0832242A35803600A5AAA0 /* QuizTypeView.swift */,
 				DA0832282A35810900A5AAA0 /* SetSelectionView.swift */,
+				DA8CF4ED2A37F09B00D2442F /* FlashcardsView.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				DA8140F72A27C2D60015AD34 /* Card.swift */,
+				DA8CF4F12A3942ED00D2442F /* CardSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 				DA8141042A281DEE0015AD34 /* RecordAudioViewModel.swift */,
 				DA08322A2A3581E100A5AAA0 /* EditCardViewModel.swift */,
 				DA08322C2A35829000A5AAA0 /* SetSelectionViewModel.swift */,
+				DA8CF4EF2A37F0B900D2442F /* FlashcardsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -314,9 +323,11 @@
 				DA8141052A281DEE0015AD34 /* RecordAudioViewModel.swift in Sources */,
 				DA6C82E92A1BC5B0007B98F0 /* ContentView.swift in Sources */,
 				DA8140F62A2698E00015AD34 /* CoreDataService.swift in Sources */,
-				DA6C83162A1BD294007B98F0 /* QuizView.swift in Sources */,
+				DA8CF4EC2A37EF4B00D2442F /* QuizTypesView.swift in Sources */,
 				DA46EA5A2A2599E10086CE5F /* FlashcardsContainer.xcdatamodeld in Sources */,
 				DA08322B2A3581E100A5AAA0 /* EditCardViewModel.swift in Sources */,
+				DA8CF4F02A37F0B900D2442F /* FlashcardsViewModel.swift in Sources */,
+				DA8CF4EE2A37F09B00D2442F /* FlashcardsView.swift in Sources */,
 				DA6C831A2A1BE197007B98F0 /* CardSetsView.swift in Sources */,
 				DA6C83142A1BD1B8007B98F0 /* CardListView.swift in Sources */,
 				DA8140FC2A27C8AF0015AD34 /* CreateCardViewModel.swift in Sources */,
@@ -326,6 +337,7 @@
 				DA6C831E2A1D156C007B98F0 /* CardListViewModel.swift in Sources */,
 				DA8141032A281DE10015AD34 /* RecordAudioView.swift in Sources */,
 				DA6C83202A1D2025007B98F0 /* CardSetsViewModel.swift in Sources */,
+				DA8CF4F22A3942ED00D2442F /* CardSet.swift in Sources */,
 				DA8140F82A27C2D60015AD34 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
